@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using LiveSplit.Model;
 using LiveSplit.TimeAttackPause.DTO;
+using Newtonsoft.Json;
 using Run = LiveSplit.TimeAttackPause.DTO.Run;
 
 namespace LiveSplit.TimeAttackPause.IO
@@ -36,8 +36,8 @@ namespace LiveSplit.TimeAttackPause.IO
                 CurrentTime = state.CurrentTime[timingMethod],
             };
             
-            var serializerOptions = new JsonSerializerOptions { WriteIndented = true };
-            var json = JsonSerializer.Serialize(run, serializerOptions);
+            // use newtonsoft json to serialize the run object to json
+            var json = JsonConvert.SerializeObject(run, Formatting.Indented);
             System.IO.File.WriteAllText(saveFilePath, json);
         }
     }

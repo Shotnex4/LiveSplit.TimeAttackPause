@@ -1,8 +1,8 @@
 ﻿#nullable enable
 using System;
 using System.IO;
-using System.Text.Json;
 using LiveSplit.Model;
+using Newtonsoft.Json;
 using Run = LiveSplit.TimeAttackPause.DTO.Run;
 
 namespace LiveSplit.TimeAttackPause.IO
@@ -13,7 +13,7 @@ namespace LiveSplit.TimeAttackPause.IO
         {
             // read all the text from the file as string
             string jsonString = File.ReadAllText(filepath);
-            Run? runDto = JsonSerializer.Deserialize<Run>(jsonString);
+            Run? runDto = JsonConvert.DeserializeObject<Run>(jsonString);
             if (runDto == null)
             {
                 return;
