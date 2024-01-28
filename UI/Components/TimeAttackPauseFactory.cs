@@ -1,19 +1,16 @@
-﻿using LiveSplit.Model;
+﻿using System;
+using LiveSplit.Model;
 using LiveSplit.UI.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LiveSplit.TimeAttackPause.UI.Components
 {
-    internal class TimeAttackPauseFactory: IComponentFactory
+    internal class TimeAttackPauseFactory : IComponentFactory
     {
         // The displayed name of the component in the Layout Editor.
         public string ComponentName => "Time Attack Pause";
 
-        public string Description => "Adds the possibility to save your progress mid run to a file and then continue from this point on. Only use this for TA runs or unofficial runs that you do not submit to the leaderboards.";
+        public string Description =>
+            "Adds the possibility to save your progress mid run to a file and then continue from this point on. Only use this for TA runs or unofficial runs that you do not submit to the leaderboards.";
 
         // The sub-menu this component will appear under when adding the component to the layout.
         public ComponentCategory Category => ComponentCategory.Timer;
