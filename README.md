@@ -12,9 +12,11 @@ However of course feel free to use it for your own runs that you do not want to 
 
 
 # How to use it?
-1. Download the dlls from the latest release on the [releases page]() and put them in your LiveSplit/Components folder.
+1. Download the dlls from the latest release on the [releases page](https://github.com/Shotnex4/LiveSplit.TimeAttackPause/releases) and put them in your LiveSplit/Components folder.
 2. Add the component to your layout. (Right click &rarr; Edit Layout &rarr; Timer &rarr; TimeAttackPause)
 3. Start your run and pause your timer at any time.
 4. Click on the "Export" button in the component to save your splits to a json file.
 5. Now you can close LiveSplit. Shut down your PC. Go to sleep. Whatever you want.
 6. When you are ready to continue your run, open LiveSplit again and load your splits by clicking on the "Import" button in the component.
+
+![example.png](doc/example.png)
