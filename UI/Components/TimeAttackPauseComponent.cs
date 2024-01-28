@@ -24,9 +24,9 @@ namespace LiveSplit.UI.Components
         public override string ComponentName => "TimeAttackPause";
 
         public override float HorizontalWidth => 50;
-        public override float MinimumWidth => 40;
-        public override float VerticalHeight => 25;
-        public override float MinimumHeight => 10;
+        public override float MinimumWidth => 160;
+        public override float VerticalHeight => 40;
+        public override float MinimumHeight => 40;
 
         // This function is called when LiveSplit creates your component. This happens when the
         // component is added to the layout, or when LiveSplit opens a layout with this component
@@ -43,8 +43,8 @@ namespace LiveSplit.UI.Components
                 Name = "ExportButton",
                 Text = "Export",
                 Location = new Point(0, 0),
-                Size = new Size(50, 25),
                 BackColor = Color.LightBlue,
+                Dock = DockStyle.Fill,
             };
 
             // create a new button that will be used to import a run state
@@ -53,25 +53,30 @@ namespace LiveSplit.UI.Components
                 Name = "ImportButton",
                 Text = "Import",
                 Location = new Point(0, 0),
-                Size = new Size(50, 25),
                 BackColor = Color.LightBlue,
+                Dock = DockStyle.Fill,
             };
 
-            // create a container for the buttons
-            var container = new FlowLayoutPanel
+            var tableLayoutContainer = new TableLayoutPanel
             {
                 Name = "Container",
+                Size = new Size(100, 32),
+                ColumnCount = 2,
+                RowCount = 1,
+                AutoSize = false,
                 Location = new Point(0, 0),
-                Size = new Size(100, 25),
-                FlowDirection = FlowDirection.LeftToRight,
-                BackColor = Color.FromArgb(1, 0, 145, 110)
+                ColumnStyles =
+                {
+                    new ColumnStyle(SizeType.Percent, 50F),
+                    new ColumnStyle(SizeType.Percent, 50F),
+                }
             };
 
             // add the buttons to the container
-            container.Controls.Add(exportButton);
-            container.Controls.Add(importButton);
+            tableLayoutContainer.Controls.Add(exportButton);
+            tableLayoutContainer.Controls.Add(importButton);
 
-            return container;
+            return tableLayoutContainer;
         }
 
         private TimeAttackPauseComponent(LiveSplitState state, Control formControl) : base(state, formControl,
@@ -82,7 +87,7 @@ namespace LiveSplit.UI.Components
 
             _exportButton = formControl.Controls["ExportButton"] as Button;
             _importButton = formControl.Controls["importButton"] as Button;
-            
+
             if (_exportButton == null || _importButton == null)
             {
                 throw new Exception("Could not find the buttons in the form control.");
@@ -114,7 +119,6 @@ namespace LiveSplit.UI.Components
 
         private void OnImportButtonClick(object sender, EventArgs e)
         {
-
             // Displays a OpenFileDialog so the user can save the Run as json file
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "json files (*.json)|*.json|All files (*.*)|*.*";
@@ -122,7 +126,7 @@ namespace LiveSplit.UI.Components
             openFileDialog.ShowDialog();
 
             if (openFileDialog.FileName == "") return;
-            
+
             if (CurrentState.CurrentPhase != TimerPhase.NotRunning)
             {
                 Model.Reset();
@@ -155,10 +159,6 @@ namespace LiveSplit.UI.Components
         // We will be adding the ability to display the component across two rows in our settings menu.
         public override void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
         {
-            // Scale buttons to 50% width of the component width
-            _exportButton.Width = (int) (width * 0.5);
-            _importButton.Width = (int) (width * 0.5);
-            
             base.DrawVertical(g, state, width, clipRegion);
             DisposeIfError();
         }
