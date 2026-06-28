@@ -11,12 +11,25 @@ I am not responsible for any runs that get rejected because you used this compon
 However of course feel free to use it for your own runs that you do not want to submit to any leaderboard.
 
 
-# How to use it?
-1. Download the dlls from the latest release on the [releases page](https://github.com/Shotnex4/LiveSplit.TimeAttackPause/releases) and put them in your LiveSplit/Components folder.
+# Installation / How to use
+1. Download the two dlls (`LiveSplit.TimeAttackPause.dll` & `Newtonsoft.Json.dll`) from the latest release on the [releases page](https://github.com/Shotnex4/LiveSplit.TimeAttackPause/releases) and put them in your **\<LiveSplitInstallationDirectory\>/Components** folder.
 2. Add the component to your layout. (Right click &rarr; Edit Layout &rarr; Timer &rarr; TimeAttackPause)
 3. Start your run and pause your timer at any time.
 4. Use Control &rarr; `Export current run` to save your splits to a json file.
 5. Now you can close LiveSplit. Shut down your PC. Go to sleep. Whatever you want.
 6. When you are ready to continue your run, open LiveSplit again and load your splits by using Control &rarr; `Import run`.
 
+# Video Installation / Setup Tutorial
+For reference here is a video of twitch streamer [keeng_beest_](https://www.twitch.tv/keeng_beest_) installing and using the extension. View this if the instructions above are unclear: https://youtu.be/Q-U00-8W1Ls  
+Thank you [keeng_beest_](https://www.twitch.tv/keeng_beest_) for providing this video!
+
+# Troubleshoot
+> I can not see the new `Export current run` and `Import run` buttons under `Control`  
+
+Make sure that you put both dlls in the ***Components*** folder of your LiveSplit installation.
+
+> An error window pops up when trying to export / import run  
+
+Most likely you did not put `Newtonsoft.Json.dll` in the ***Components*** folder of your LiveSplit installation  
+  
 ![example.png](doc/example.png)
